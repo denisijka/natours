@@ -1,8 +1,17 @@
 .header
+	position: relative
 	height: 95vh
 	// it's basically we say that every point, the height of this box, of this element, should be 95% of the viewport height.
 	background-image: linear-gradient(to right bottom,
 	rgba(126, 213, 111, 0.8), rgba(40, 180, 131, 0.8)) ,url(../img/hero.jpeg)
 	background-size: cover
 	background-position: top
-	clip-path: polygon(0 0,100% 0,100% 70%, 0 100%)
+	clip-path: polygon(0 0,100% 0,100% 75vh, 0 100%)
+	// now if we change the viewport height it will also change dynamically
+	&__logo-box
+		position: absolute
+		top: 40px
+		left: 40px
+	&__logo
+		height: 35px
+		// the width we'll scale accordingly. We don't even have to specify it. All we do is to specify the height, and the width will be automatically figured out by the browser. We could instead also set the width and then the height would be figured out by the browser. But we prefer to control the height of elements.
