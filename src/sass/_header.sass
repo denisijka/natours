@@ -15,9 +15,25 @@
 	&__logo
 		height: 35px
 		// the width we'll scale accordingly. We don't even have to specify it. All we do is to specify the height, and the width will be automatically figured out by the browser. We could instead also set the width and then the height would be figured out by the browser. But we prefer to control the height of elements.
+	&__text-box
+		position: absolute
+		top: 50%
+		left: 50%
+		transform: translate(-50%,-50%)
+		// left: 50% - this here is clearly 50% from the left this part of the box, which is where the measure starts. So where the 50% starts counting. It's from left side, all the way to this side(where stays our text box) and it's 50%, it's half of the element, half of the header. It's 50% of the width of the parent element. And the same thing aplies to the top.
+		// transform: translate(-50%,-50%) - that's because these 50% are now no longer in relation to the parent element, but of the element itself. And so if we say we want minus 50%, it will be shifted half of the width to the left side, and the same from the hight. So minus 50% says that it will be shifted 50% of the element's height to the top.
+
 	&__heading-primary
 		color: #fff
 		text-transform: uppercase
 	&__heading-primary-main
-
+		display: block
+		font-size: 60px
+		font-weight: 400
+		letter-spacing: 35px
+		// block elements occopy the entire width that they have available. And more importantly for this,case, they create line breaks after and before them.
 	&__heading-primary-sub
+		display: block
+		font-size: 20px
+		font-weight: 700
+		letter-spacing: 17.4px
