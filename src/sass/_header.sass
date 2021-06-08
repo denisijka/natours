@@ -15,9 +15,11 @@
 	&__logo
 		height: 35px
 		// the width we'll scale accordingly. We don't even have to specify it. All we do is to specify the height, and the width will be automatically figured out by the browser. We could instead also set the width and then the height would be figured out by the browser. But we prefer to control the height of elements.
+		&:hover
+			animation: moveInleft 1s ease-out
 	&__text-box
 		position: absolute
-		top: 50%
+		top: 40%
 		left: 50%
 		transform: translate(-50%,-50%)
 		// left: 50% - this here is clearly 50% from the left this part of the box, which is where the measure starts. So where the 50% starts counting. It's from left side, all the way to this side(where stays our text box) and it's 50%, it's half of the element, half of the header. It's 50% of the width of the parent element. And the same thing aplies to the top.
@@ -26,29 +28,64 @@
 	&__heading-primary
 		color: #fff
 		text-transform: uppercase
+		backface-visibility: hidden
+		// So the entire heading-primary element, because you see actually this entire element is what moves on this animation. It's a bit shaky, and it's the entire heading-primary element. This backface-visibility property determines if the back part of the element when we transform it is visible or hidden for user. So imagine we have an element and we rotate it 180 degrees.We use this fix here, like this hack in order to fix this little shaking that we see an animation.
 	&__heading-primary-main
 		display: block
 		font-size: 60px
 		font-weight: 400
 		letter-spacing: 35px
 		// block elements occopy the entire width that they have available. And more importantly for this,case, they create line breaks after and before them.
+		animation-name: moveInLeft
+		animation-duration: 1s
+		animation-timing-function: ease-out
+		// ease-in function, the animation will start slower, and then accelerate over time. And ease-out it's opposite,so it will start faster and it will become slower by the end.
+		// This is a function which defines how the animation will proceed. So, how fast or how slow these parameters that we spacified here happen over time.
+		// ------------------------------------------
+		// animation-delay: 3s
+		// so now before this animation starts to play, it will 	 first wait 3 seconds.
+		// ------------------------------------------
+		// animation-iteration-count: 3
+		// The animation will simply happen three times
+
 	&__heading-primary-sub
 		display: block
 		font-size: 20px
 		font-weight: 700
 		letter-spacing: 17.4px
+		animation: moveInRight 1s ease-out /** you can put all of these together, and css will figure out what means what.**/
 
-	@keyframes moveInleft
-		0%
+	@keyframes moveInLeft
+		// So we start with 0% which is before the annimation actually starts.
+		0% // Initial position is a lot more to the left.
+
 			opacity: 0
+			// Why translateX? Because we want it to animate in the x-direction. 
 			transform: translateX(-100px)
 			// The direction goes from left to right. So a positive value means it goes to the right, and negative value means it goes to the left.
-		80%
+			// --------------------------------------------
+		80% // Intermediate position, is a bit more to the right
 
-		100%
+			transform: translateX(10px)
+			// If we're specifying s positive value here,it will go to the right side.
+			// --------------------------------------------
+			// Then the finish is the 100%, which is when the animation finishes.
+		100% // Final position is 0
+
 			opacity: 1
 			transform: translate(0)
 			// Why 0? Well because, if we translate at 0, then it's gonna look exactly the way that it looks right now.
 
 			// So that's one of the properties that we're animating here. Now for the browsers performance, it's best to only ever animate two different properties. One is opasity, which is the one that we're using here, and the other one is the transform property. That's what the browsers are optimized for these two properties. But with transform, we can do a whole lot.
 			// part 8 4:00
+	@keyframes moveInRight
+		0%
+			opacity: 0
+			transform: translateX(100px)
+			// If it's a plus value, it moves the element to the right. Because it goes forward in the x-direction.
+		80%
+			transform: translateX(-10px)
+			// If it's a plus value, it moves the element to the right. Because it goes forward in the x-direction.
+		100%
+			opacity: 1
+			transform: translateX(0)
