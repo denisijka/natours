@@ -38,11 +38,11 @@ let path = {
 		json: project_name + "/json/"
 	},
 	src: {
-		favicon: src_folder + "/img/favicon.{jpg,png,svg,gif,ico,webp}",
+		favicon: src_folder + "/img/favicon.{jpeg,jpg,png,svg,gif,ico,webp}",
 		html: [src_folder + "/**/*.html", "!" + src_folder + "/_*.html"],
 		js: src_folder + "/js/script.js",
 		css: src_folder + "/sass/style.sass",
-		images: [src_folder + "/img/**/*.{jpeg,png,svg,gif,ico,webp}", "!**/favicon.*"],
+		images: [src_folder + "/img/**/*.{jpeg,jpg,png,svg,gif,ico,webp}", "!**/favicon.*"],
 		fonts: src_folder + "/fonts/*.ttf",
 		videos: src_folder + "/videos/*.*",
 		json: src_folder + "/json/*.*"
@@ -51,7 +51,7 @@ let path = {
 		html: src_folder + "/**/*.html",
 		js: src_folder + "/**/*.js",
 		css: src_folder + "/sass/**/*.sass",
-		images: src_folder + "/img/**/*.{jpeg,png,svg,gif,ico,webp}",
+		images: src_folder + "/img/**/*.{jpeg,jpg,png,svg,gif,ico,webp}",
 		json: src_folder + "/json/*.*"
 	},
 	clean: "./" + project_name + "/"
@@ -190,7 +190,7 @@ function fonts() {
 function fontstyle() {
 	let file_content = fs.readFileSync(src_folder + '/sass/fonts.sass');
 	if (file_content == '') {
-		fs.writeFile(src_folder + '/scss/fonts.scss', '', cb);
+		fs.writeFile(src_folder + '/sass/fonts.sass', '', cb);
 		return fs.readdir(path.build.fonts, function (err, items) {
 			if (items) {
 				let c_fontname;
@@ -198,7 +198,7 @@ function fontstyle() {
 					let fontname = items[i].split('.');
 					fontname = fontname[0];
 					if (c_fontname != fontname) {
-						fs.appendFile(src_folder + '/scss/fonts.scss', '@include font("' + fontname + '", "' + fontname + '", "400", "normal");\r\n', cb);
+						fs.appendFile(src_folder + '/sass/fonts.sass', '@include font("' + fontname + '", "' + fontname + '", "400", "normal");\r\n', cb);
 					}
 					c_fontname = fontname;
 				}

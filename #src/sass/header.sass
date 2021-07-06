@@ -21,6 +21,7 @@
 		// left: 50% - this here is clearly 50% from the left this part of the box, which is where the measure starts. So where the 50% starts counting. It's from left side, all the way to this side(where stays our text box) and it's 50%, it's half of the element, half of the header. It's 50% of the width of the parent element. And the same thing aplies to the top.
 		// transform: translate(-50%,-50%) - that's because these 50% are now no longer in relation to the parent element, but of the element itself. And so if we say we want minus 50%, it will be shifted half of the width to the left side, and the same from the hight. So minus 50% says that it will be shifted 50% of the element's height to the top.
 		text-align: center
+		//  so now it's going center the text that is inside of the box, including of course, the button.
 	&__heading-primary
 		color: #fff
 		text-transform: uppercase
@@ -30,6 +31,7 @@
 	&__heading-primary-main
 		display: block
 		font-size: 60px
+		line-height: 85px
 		font-weight: 400
 		letter-spacing: 35px
 		// block elements occopy the entire width that they have available. And more importantly for this,case, they create line breaks after and before them.
@@ -48,6 +50,7 @@
 	&__heading-primary-sub
 		display: block
 		font-size: 20px
+		line-height: 40px
 		font-weight: 700
 		letter-spacing: 17.4px
 		animation: moveInRight 1s ease-out /** you can put all of these together, and css will figure out what means what.**/
@@ -90,7 +93,6 @@
 		&:link,&:visited
 			// This here is a pseudo-class, it's the link pseudo-class.So this link here is a state of the button selector.
 			text-transform: uppercase
-			text-decoration: none
 			padding: 15px 40px
 			// it's occupying here this space on the top of this other text where it shouldn't. That's because it's right now an inline element. So this button here is right now an inline element, because it's simply text, but we should display it as an inline-block.
 			display: inline-block
@@ -109,7 +111,7 @@
 			// And since we don't wont any shadow in the x direction, you only want it in the y direction. Now in y, which is the second one, we actually want some offset - 10px, so the shadow will be 5px down. Then the third value is the blur that we want see. Let's say 10px so we have a really high blur here, and this makes for a more blurry shadow, so it looks like we're further away. And so in the active box shadow , we're then going to reduce that the blur and that it looks like we're back closer to the page. And here now, finally, we can put a color. So an RGBA in this case because we want the color of the shadow to be transparent. So here we put it to black, complete black, and then let's just put a transparency value. So this is black, but not completely black, but only with 20% opacity, in order to make it just a very subtle shadow and not all to visible. 
 		&:active
 			transform: translateY(-1px)
-			// Now when we clicked it, remember it looked a bit different. So it's the active state remember, when we click element then that's called the active srate. 
+			// Now when we clicked it, remember it looked a bit different. So it's the active state remember, when we click element then that's called the active rate. 
 			// So this -1px up is in relation to the initial state to the link state, not to the hover. So it's not -1px in relation to to the hover state, but it's always here  to the initial link state. 
 			// When we click, it goes down a bit.
 		&-white
