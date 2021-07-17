@@ -92,6 +92,8 @@ h6 {
 }
 
 body {
+  font-weight: 400;
+  line-height: 168.75%;
   color: #21243d;
   font-size: 14px;
 }
@@ -247,6 +249,7 @@ body._lock {
 
 .header .btn:link,
 .header .btn:visited {
+  font-size: 16px;
   text-transform: uppercase;
   padding: 15px 40px;
   display: inline-block;
@@ -273,6 +276,26 @@ body._lock {
 .header .btn-white {
   background-color: #fff;
   color: #777;
+}
+
+.header .btn::after {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  /** that's 100% of the width of the button **/
+  width: 100%;
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
 }
 
 @media (max-width: 991.98px) {

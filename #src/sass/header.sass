@@ -91,6 +91,7 @@
 			transform: translateX(0)
 	.btn
 		&:link,&:visited
+			font-size: 16px
 			// This here is a pseudo-class, it's the link pseudo-class.So this link here is a state of the button selector.
 			text-transform: uppercase
 			padding: 15px 40px
@@ -111,9 +112,28 @@
 			// And since we don't wont any shadow in the x direction, you only want it in the y direction. Now in y, which is the second one, we actually want some offset - 10px, so the shadow will be 5px down. Then the third value is the blur that we want see. Let's say 10px so we have a really high blur here, and this makes for a more blurry shadow, so it looks like we're further away. And so in the active box shadow , we're then going to reduce that the blur and that it looks like we're back closer to the page. And here now, finally, we can put a color. So an RGBA in this case because we want the color of the shadow to be transparent. So here we put it to black, complete black, and then let's just put a transparency value. So this is black, but not completely black, but only with 20% opacity, in order to make it just a very subtle shadow and not all to visible. 
 		&:active
 			transform: translateY(-1px)
-			// Now when we clicked it, remember it looked a bit different. So it's the active state remember, when we click element then that's called the active rate. 
+			//  when we clicked it, remember it looked a bit different. So it's the active state remember, when we click element then that's called the active rate. 
 			// So this -1px up is in relation to the initial state to the link state, not to the hover. So it's not -1px in relation to to the hover state, but it's always here  to the initial link state. 
 			// When we click, it goes down a bit.
 		&-white
 			background-color: #fff
 			color: #777
+		&::after
+			content: ''
+			display: inline-block
+			// We have to specify the display property inline-block, because the button that we have is also inline block
+			height: 100%
+			/** that's 100% of the width of the button **/
+			width: 100%
+			// and this works because the after pseudo-element is basically treated like a child of the button.
+			content: ""
+			display: inline-block
+			height: 100%
+			width: 100%
+			border-radius: 10rem
+			position: absolute
+			top: 0
+			left: 0
+			z-index: -1
+			// -webkit-transition: all 0.4s
+			transition: all 0.4s
